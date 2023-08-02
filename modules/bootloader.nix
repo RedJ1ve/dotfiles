@@ -9,6 +9,7 @@
     consoleLogLevel = 0;
     initrd.verbose = false;
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
+    kernelModules = [ "v4l2loopback" ];
 
     loader = {
       timeout = 5;

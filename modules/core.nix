@@ -23,7 +23,7 @@
 
   users.users.aecyr = {
     isNormalUser = true;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "audio" "video" ];
   };
 
   console.keyMap = lib.mkDefault "uk";

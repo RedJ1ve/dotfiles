@@ -9,6 +9,7 @@
     p7zip
 
     webcord-vencord
+    discord-canary
     xfce.thunar
   ];
 }
