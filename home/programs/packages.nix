@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
+  
   home.packages = with pkgs; [
     neofetch
     nnn
@@ -8,8 +9,8 @@
     unzip
     p7zip
 
-    webcord-vencord
-    discord-canary
+    stable.webcord-vencord
     xfce.thunar
+    xorg.xlsclients
   ];
 }
