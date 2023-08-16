@@ -5,6 +5,8 @@
 }: {
   documentation.nixos.enable = false;
 
+  virtualisation.docker.enable = true;
+
   i18n = {
     defaultLocale = "en_US.UTF-8";
 
@@ -23,7 +25,7 @@
 
   users.users.aecyr = {
     isNormalUser = true;
-    extraGroups = ["networkmanager" "wheel" "audio" "video" ];
+    extraGroups = ["networkmanager" "wheel" "audio" "video"];
   };
 
   console.keyMap = lib.mkDefault "uk";

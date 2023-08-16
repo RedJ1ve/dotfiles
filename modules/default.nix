@@ -17,6 +17,7 @@ in {
           {home-manager.useGlobalPkgs = true;}
           inputs.home-manager.nixosModule
           inputs.hyprland.nixosModules.default
+          inputs.nur.nixosModules.nur
           module_args
           ./bootloader.nix
           ./core.nix

@@ -1,5 +1,8 @@
-{pkgs, inputs, ...}: {
-  
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     neofetch
     nnn
@@ -9,8 +12,17 @@
     unzip
     p7zip
 
-    stable.webcord-vencord
     xfce.thunar
     xorg.xlsclients
+
+    docker-compose
+    libimobiledevice
+    libgcrypt
+    libunistring
+    libusbmuxd
+
+    swww
+
+    nur.repos.nltch.spotify-adblock
   ];
 }

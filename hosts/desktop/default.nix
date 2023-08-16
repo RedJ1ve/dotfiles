@@ -18,9 +18,9 @@
   networking.networkmanager.enable = true;
 
   programs.hyprland = {
-  	enable = true;
-  	nvidiaPatches = true;
-  	xwayland.enable = true;
+    enable = true;
+    nvidiaPatches = true;
+    xwayland.enable = true;
   };
 
   xdg.portal = {

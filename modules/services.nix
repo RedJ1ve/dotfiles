@@ -4,6 +4,8 @@
   ...
 }: {
   services = {
+    usbmuxd.enable = true;
+
     xserver = {
       layout = "gb";
       xkbVariant = "";
