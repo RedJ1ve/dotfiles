@@ -14,12 +14,14 @@
 
     xfce.thunar
     xorg.xlsclients
+    vscodium
 
     docker-compose
     libimobiledevice
     libgcrypt
     libunistring
     libusbmuxd
+    nodejs_20
 
     swww
 
