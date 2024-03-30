@@ -19,7 +19,6 @@
 
   programs.hyprland = {
     enable = true;
-    nvidiaPatches = true;
     xwayland.enable = true;
   };
 
@@ -27,5 +26,5 @@
     enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
     gtkUsePortal = true;
-  };
+  };  
 }

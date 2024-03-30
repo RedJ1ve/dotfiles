@@ -3,9 +3,9 @@
   pkgs,
   ...
 }: {
-  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware = {
     nvidia = {
@@ -13,8 +13,10 @@
       open = false;
       nvidiaSettings = true;
       powerManagement.enable = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.production;
     };
+
+    cpu.intel.updateMicrocode = true;
 
     opengl = {
       enable = true;
@@ -34,6 +36,20 @@
       "rd.driver.blacklist=nouveau"
       "modprobe.blacklist=nouveau"
       "ibt=off"
+      "intel_iommu=on"
+      "iommu=pt"
+      "i915.enable_gvt=1"
+      "kvm.ignore_msrs=1"
+    ];
+
+   kernelModules = [
+      "i915"
+      "nvidia"
+      "nvidia_modeset"
+      "nvidia_uvm"
+      "nvidia_drm"
+      "vfoi-pci"
+      "kvm-intel"
     ];
 
     initrd.kernelModules = [
@@ -42,6 +58,8 @@
       "nvidia_modeset"
       "nvidia_uvm"
       "nvidia_drm"
+      "vfio-pci"
+      "kvm-intel"
     ];
 
     extraModprobeConfig = "options nvidia-drm modeset=1";

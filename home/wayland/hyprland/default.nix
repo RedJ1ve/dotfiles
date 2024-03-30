@@ -1,5 +1,5 @@
 {
-  inputs',
+  inputs,
   lib,
   pkgs,
   ...
@@ -12,10 +12,7 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    nvidiaPatches = true;
-    xwayland = {
-      enable = true;
-      hidpi = false;
-    };
+    xwayland.enable = true;
+    plugins = [inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix];
   };
 }

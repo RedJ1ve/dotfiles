@@ -22,7 +22,7 @@
 
     # Execute your favorite apps at launch
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec-once=swww init
+    # exec-once=swww init
 
     # Source a file (multi-file configs)
     # source = ~/.config/hypr/myColors.conf
@@ -33,6 +33,13 @@
     env = GBM_BACKEND,nvidia-drm
     env = __GLX_VENDOR_LIBRARY_NAME,nvidia
     env = WLR_NO_HARDWARE_CURSORS,1
+
+    plugin {
+	csgo-vulkan-fix {
+	  res_w = 1280
+	  res_h = 960
+	}
+    }
 
     # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
     input {
@@ -141,6 +148,8 @@
     bind = $mainMod, R, exec, rofi -show drun
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, J, togglesplit, # dwindle
+    bind = $mainMod SHIFT, S, exec, grimshot copy area
+    bind = $mainMod, F, fullscreen
 
     # Move focus with mainMod + arrow keys
     bind = $mainMod, left, movefocus, l

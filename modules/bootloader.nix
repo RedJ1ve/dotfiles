@@ -10,6 +10,7 @@
     initrd.verbose = false;
     kernelPackages = pkgs.linuxPackages_xanmod_latest;
     kernelModules = ["v4l2loopback"];
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 
     loader = {
       timeout = 5;

@@ -3,6 +3,17 @@
   pkgs,
   ...
 }: {
+  #virtualisation.anbox.enable = true;
+
+  systemd = {
+      packages = with pkgs; [ qbittorrent-nox jackett];
+      services."qbittorrent-nox@aecyr" = {
+        overrideStrategy = "asDropin";
+        wantedBy = ["multi-user.target"];
+      };
+      services.jackett.enable = true;
+    };
+
   services = {
     usbmuxd.enable = true;
 

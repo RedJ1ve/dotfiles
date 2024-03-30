@@ -7,6 +7,9 @@
 
   virtualisation.docker.enable = true;
 
+  hardware.opengl.driSupport32Bit = true ;
+  hardware.opentabletdriver.enable = true;
+
   i18n = {
     defaultLocale = "en_US.UTF-8";
 
