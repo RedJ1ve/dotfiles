@@ -13,22 +13,58 @@
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = [];
+  boot.initrd.kernelModules = ["dm-snapshot"];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
+  boot.initrd.luks.devices = {
+    root = {
+      device = "/dev/disk/by-uuid/456f8bcc-3348-4521-9478-1d38ee8b1859";
+      preLVM = true;
+      allowDiscards = true;
+    };
+  };
+
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/fa9ad57d-dc00-46d2-afcc-77267163b758";
-    fsType = "ext4";
+    device = "/dev/disk/by-uuid/eb832fbe-7d80-45d5-a1bd-24283f7c4994";
+    fsType = "btrfs";
+    options = ["subvol=root" "compress=zstd" "noatime"];
+  };
+
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/eb832fbe-7d80-45d5-a1bd-24283f7c4994";
+    fsType = "btrfs";
+    options = ["subvol=home" "compress=zstd" "noatime"];
+  };
+
+  fileSystems."/nix" = {
+    device = "/dev/disk/by-uuid/eb832fbe-7d80-45d5-a1bd-24283f7c4994";
+    fsType = "btrfs";
+    options = ["subvol=nix" "compress=zstd" "noatime"];
+  };
+
+  fileSystems."/persist" = {
+    device = "/dev/disk/by-uuid/eb832fbe-7d80-45d5-a1bd-24283f7c4994";
+    fsType = "btrfs";
+    options = ["subvol=persist" "compress=zstd" "noatime"];
+    neededForBoot = true;
+  };
+
+  fileSystems."/var/log" = {
+    device = "/dev/disk/by-uuid/eb832fbe-7d80-45d5-a1bd-24283f7c4994";
+    fsType = "btrfs";
+    options = ["subvol=log" "compress=zstd" "noatime"];
+    neededForBoot = true;
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/4938-15C5";
+    device = "/dev/disk/by-uuid/CF53-13F6";
     fsType = "vfat";
+    options = ["umask=0077"];
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/99ffb4a0-a477-4a8a-88d3-e9f50ff486d8";}
+    {device = "/dev/disk/by-uuid/3f9cbdc9-c799-4470-8a29-6125b1c70063";}
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -39,6 +75,5 @@
   # networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

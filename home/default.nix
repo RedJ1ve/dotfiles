@@ -1,9 +1,19 @@
 {
-  home = {
-    username = "aecyr";
-    homeDirectory = "/home/aecyr";
-    stateVersion = "23.05";
-  };
+  inputs,
+  config,
+  self,
+  ...
+}: {
+  imports = [
+    ./ags.nix
+    ./dconf.nix
+    ./foot.nix
+    ./hyprland
+    ./packages.nix
+    ./scripts
+    ./theme.nix
+    ./yazi.nix
+  ];
 
-  programs.home-manager.enable = true;
+  config.home.stateVersion = "23.11";
 }
