@@ -30,6 +30,10 @@ in {
     # but their best does not constitute a usable driver for me
     boot.blacklistedKernelModules = ["nouveau"];
 
+    boot.kernelParams = [
+      "nvidia-drm.fbdev=1"
+    ];
+
     environment = {
       sessionVariables = mkMerge [
         {LIBVA_DRIVER_NAME = "nvidia";}

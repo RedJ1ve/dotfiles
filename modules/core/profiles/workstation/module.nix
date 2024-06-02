@@ -6,7 +6,7 @@
   inherit (lib) mkIf;
 in {
   config.modules.system.programs = mkIf config.modules.profiles.workstation.enable {
-    vencord.enable = true;
+    vesktop.enable = true;
     element.enable = true;
     libreoffice.enable = true;
     firefox.enable = true;

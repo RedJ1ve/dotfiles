@@ -13,7 +13,7 @@
       # NixOS module system, you should not be changing it.
       # I will personally strangle every moron who just puts nothing but "DONT CHANGE" next
       # to this value
-      stateVersion = "24.05";
+      stateVersion = "23.11";
     };
 
     manual = {

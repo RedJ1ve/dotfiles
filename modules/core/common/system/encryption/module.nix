@@ -37,7 +37,7 @@ in {
       bypassWorkqueues = true;
 
       # handle LUKS decryption before LVM
-      preLVM = mkIf (cfg.keyFile != null) "${cfg.keyFile}";
+      preLVM = mkIf (cfg.keyFile = null) true;
 
       # the device with the matching id will be searched for the key file
       keyFile = mkIf (cfg.keyFile != null) "${cfg.keyFile}";

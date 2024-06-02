@@ -31,7 +31,6 @@
     encryption = {
     	enable = true;
     	device = "enc";
-    	#device = "/dev/disk/by-uuid/08380e58-57d0-43d6-aebb-d5bf9ec98834";
     };
 
     networking = {

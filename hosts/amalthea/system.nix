@@ -1,6 +1,6 @@
 {self, ...}: {
   system = {
-    stateVersion = "24.05";
+    stateVersion = "23.11";
     configurationRevision = self.rev or "dirty";
   };
 }

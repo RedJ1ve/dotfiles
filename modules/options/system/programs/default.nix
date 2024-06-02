@@ -11,7 +11,6 @@ in {
     dev.enable = mkEnableOption "development related package sets";
 
     libreoffice.enable = mkEnableOption "LibreOffice suite";
-    discord.enable = mkEnableOption "Discord messenger";
     element.enable = mkEnableOption "Element Matrix client";
     obs.enable = mkEnableOption "OBS Studio";
     spotify.enable = mkEnableOption "Spotify music player";
@@ -19,7 +18,7 @@ in {
     vscode.enable = mkEnableOption "Visual Studio Code";
     steam.enable = mkEnableOption "Steam game client";
     kdeconnect.enable = mkEnableOption "KDE Connect utility";
-    vencord.enable = mkEnableOption "Vencord Discord client";
+    vesktop.enable = mkEnableOption "Vencord Discord client";
     zathura.enable = mkEnableOption "Zathura document viewer";
     rnnoise.enable = mkEnableOption "RNNoise noise suppression plugin";
     noisetorch.enable = mkEnableOption "NoiseTorch noise suppression plugin";

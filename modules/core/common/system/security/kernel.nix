@@ -66,10 +66,6 @@ in {
       # User namespaces are required for sandboxing. Better than nothing imo.
       allowUserNamespaces = true;
 
-      # Disable unprivileged user namespaces, unless containers are enabled
-      # required by podman to run containers in rootless mode.
-      unprivilegedUsernsClone = config.virtualisation.containers.enable;
-
       allowSimultaneousMultithreading = true;
     };
 

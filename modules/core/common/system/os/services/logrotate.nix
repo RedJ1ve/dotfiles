@@ -3,6 +3,7 @@
   lib,
   ...
 }: {
+  services.logrotate.checkConfig = false;
   services.logrotate.settings.header = {
     # general
     global = true;

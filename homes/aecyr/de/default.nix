@@ -3,10 +3,12 @@
     ./hyprland
     ./foot.nix
     ./schizofox.nix
+    ./vesktop.nix
+    ./minecraft.nix
+    ./fuzzel.nix
   ];
 
   home.packages = with pkgs; [
-    vesktop
-    gnome.nautilus
+    ventoy
   ];
 }
