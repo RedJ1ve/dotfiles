@@ -1,39 +1,12 @@
 {
-  outputs = {flake-parts, ...} @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} ({withSystem, ...}: {
-      systems = [
-        "x86_64-linux"
-      ];
+  description = "Aecyr's NixOS and Home-Manager Configurations";
 
-      imports = [
-        inputs.flake-parts.flakeModules.easyOverlay
-        inputs.treefmt-nix.flakeModule
-
-        ./flake/lib
-        ./flake/modules
-        ./flake/pkgs
-        ./flake/pre-commit
-
-        ./flake/args.nix
-        ./flake/fmt.nix
-        ./flake/shell.nix
-      ];
-
-      flake = {
-        nixosConfigurations = import ./hosts {inherit inputs withSystem;};
-      };
-    });
+  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} {imports = [./flake];};
 
   inputs = {
-    systems.url = "github:nix-systems/default-linux";
-
-    nixpkgs.url = "github:Nixos/nixpkgs/nixos-unstable";
-    nixpkgs-small.url = "github:Nixos/nixpkgs/nixos-unstable-small";
-    nix-super.url = "github:privatevoid-net/nix-super";
-    nyxpkgs.url = "github:NotAShelf/nyxpkgs";
-    nix-gaming.url = "github:fufexan/nix-gaming";
-
-    nixos-hardware.url = "github:nixos/nixos-hardware";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nyxpkgs.url = "github:notashelf/nyxpkgs";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -45,67 +18,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    flake-utils = {
-      url = "github:numtide/flake-utils";
-      inputs.systems.follows = "systems";
-    };
-
-    flake-compat = {
-      url = "github:edolstra/flake-compat";
-      flake = false;
-    };
-
-    nh = {
-      url = "github:viperML/nh";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
-
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
-
-    nixfmt = {
-      url = "github:nixos/nixfmt";
-      flake = false;
-    };
-
-    devshell = {
-      url = "github:numtide/devshell";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
-
-    git-hooks = {
-      url = "github:cachix/git-hooks.nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-small";
-        flake-compat.follows = "flake-compat";
-      };
-    };
-
-    nixpak = {
-      url = "github:nixpak/nixpak";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-small";
-        flake-parts.follows = "flake-parts";
-      };
-    };
-
-    impermanence.url = "github:nix-community/impermanence";
-
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
-        flake-compat.follows = "flake-compat";
-      };
-    };
-
-    nix-index-db = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
+    aesthetic-iosevka.url = "github:alphatechnolog/aesthetic-iosevka";
 
     agenix = {
       url = "github:ryantm/agenix";
@@ -116,24 +29,27 @@
       };
     };
 
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-small";
-        flake-utils.follows = "flake-utils";
-      };
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    lanzaboote.url = "github:nix-community/lanzaboote";
+
+    # matugen = {
+    #   url = "github:InioX/matugen/module";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+
+    matugen.url = "github:Theaninova/matugen/add-home-manager-module";
+
+    nh = {
+      url = "github:viperML/nh";
+      inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
     nil = {
       url = "github:oxalica/nil";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-small";
-        rust-overlay.follows = "rust-overlay";
-      };
-    };
-
-    neovim-nightly = {
-      url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
@@ -142,18 +58,8 @@
       inputs = {
         nixpkgs.follows = "nixpkgs-small";
         nil.follows = "nil";
-        flake-utils.follows = "flake-utils";
         flake-parts.follows = "flake-parts";
       };
-    };
-
-    ags.url = "github:Aylur/ags";
-    astal.url = "github:Aylur/astal";
-    matugen.url = "github:InioX/matugen";
-
-    spicetify = {
-      url = "github:the-argus/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
     schizofox = {
@@ -161,42 +67,73 @@
       inputs = {
         nixpkgs.follows = "nixpkgs-small";
         flake-parts.follows = "flake-parts";
-        nixpak.follows = "nixpak";
       };
     };
 
-    aesthetic-iosevka.url = "github:alphatechnolog/aesthetic-iosevka";
+    schizosearch = {
+      url = "github:sioodmy/schizosearch";
+      inputs = {
+        flake-parts.follows = "flake-parts";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    spicetify = {
+      url = "github:the-argus/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+    };
+
+    treefmt = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs-small";
+    };
+
+    yazi.url = "github:sxyazi/yazi";
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    hyprlock.url = "github:hyprwm/hyprlock";
-    hyprpicker.url = "github:hyprwm/hyprpicker";
-    hyprland-contrib.url = "github:hyprwm/contrib";
-    hyprspace = {
-      url = "github:KZDKM/Hyprspace";
-      inputs.hyprland.follows = "hyprland";
+
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs = {
+        hyprlang.follows = "hyprland/hyprlang";
+        nixpkgs.follows = "hyprland/nixpkgs";
+      };
+    };
+
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
     };
 
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-  };
 
-  nixConfig = {
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-      "https://hyprland.cachix.org"
-      "https://cache.privatevoid.net"
-      "https://nyx.cachix.org"
-    ];
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs = {
+        hyprlang.follows = "hyprland/hyprlang";
+        nixpkgs.follows = "hyprland/nixpkgs";
+      };
+    };
 
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "cache.privatevoid.net:SErQ8bvNWANeAvtsOESUwVYr2VJynfuc9JRwlzTTkVg="
-      "notashelf.cachix.org-1:VTTBFNQWbfyLuRzgm2I7AWSDJdqAa11ytLXHBhrprZk="
-      "nyx.cachix.org-1:xH6G0MO9PrpeGe7mHBtj1WbNzmnXr7jId2mCiq6hipE="
-    ];
+    hyprspace = {
+      url = "github:kzdkm/hyprspace";
+      # inputs.hyprland.follows = "hyprland";
+    };
+
+    hy3 = {
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
+
+    xdg-desktop-portal-hyprland = {
+      url = "github:hyprwm/xdg-desktop-portal-hyprland";
+      inputs = {
+        hyprlang.follows = "hyprland/hyprlang";
+        nixpkgs.follows = "hyprland/nixpkgs";
+      };
+    };
   };
 }
