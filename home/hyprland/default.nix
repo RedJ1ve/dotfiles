@@ -4,8 +4,7 @@
   ...
 }: {
   imports = [
-    # ./binds.nix
-    ./binds-hy3.nix
+    ./binds.nix
     ./plugins.nix
     ./rules.nix
     ./settings.nix

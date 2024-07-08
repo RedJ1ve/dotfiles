@@ -1,11 +1,8 @@
 {
   inputs',
   pkgs,
-  lib,
   ...
-}: let
-  inherit (lib.attrsets) mapAttrs;
-in {
+}: {
   fonts = {
     enableDefaultPackages = false;
 

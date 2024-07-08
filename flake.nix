@@ -123,11 +123,6 @@
       # inputs.hyprland.follows = "hyprland";
     };
 
-    hy3 = {
-      url = "github:outfoxxed/hy3";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     xdg-desktop-portal-hyprland = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs = {

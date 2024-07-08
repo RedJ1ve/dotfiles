@@ -1,6 +1,8 @@
 {
   config,
+  inputs,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -10,10 +12,10 @@
   ];
 
   environment = {
-    systemPackages = with pkgs; [ git ];
+    systemPackages = with pkgs; [git];
     defaultPackages = [];
   };
-  
+
   nix = {
     package = pkgs.nixVersions.git;
 
@@ -28,6 +30,13 @@
     daemonIOSchedClass = "idle";
     daemonIOSchedPriority = 7;
 
+    # pin the registry to avoid downloading and evaling a new nixpkgs version every time
+    registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
+
+    # This will additionally add your inputs to the system's legacy channels
+    # Making legacy nix commands consistent as well, awesome!
+    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+
     settings = {
       # automatically optimise the nix store
       auto-optimise-store = true;
@@ -35,12 +44,14 @@
       # allow sudo users to manage nix store
       allowed-users = ["root" "@wheel"];
       trusted-users = ["root" "@wheel"];
-      
+
       # use binary cache, this is not gentoo
       builders-use-substitutes = true;
-            
+
       # move on if package cannot be found in cache
       connect-timeout = 5;
+
+      flake-registry = "/etc/nix/registry.json";
 
       # allow unlimited tcp connections
       http-connections = 0;
@@ -54,13 +65,13 @@
       # nix builder runs in sandboxed enrironments
       sandbox = true;
       sandbox-fallback = false;
-            
+
       # execute builds inside cgroups
       use-cgroups = true;
-      
+
       # force nix to use the xdg directory specification
       use-xdg-base-directories = true;
-      
+
       # disable dirty git tree warning
       warn-dirty = false;
 
@@ -73,12 +84,10 @@
         "ca-derivations" # allow derivations to be content-adressed
         "cgroups" # allows nix to execute builds inside cgroups
         "flakes" # enables flakes
-        "git-hashing" # allow creating (content-addressed) store objects which are hashed via git's hashing algorithm
         "nix-command" # enable the new nix subcommands
         "recursive-nix" # allow derivation builders to call nix, and thus build derivations recursively
-        "verified-fetches" # enables verification of git commit signatures through the fetchGit built-in
       ];
-      
+
       # substituters to use
       substituters = [
         "https://cache.ngi0.nixos.org" # content addressed nix cache (TODO)

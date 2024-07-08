@@ -4,7 +4,6 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
 }: {
@@ -56,7 +55,7 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/D305-8A47";
     fsType = "vfat";
-    options = ["umask=0077 "];
+    options = ["umask=0077"];
   };
 
   swapDevices = [

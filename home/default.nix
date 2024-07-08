@@ -5,6 +5,7 @@
 }: {
   home-manager = {
     verbose = true;
+    backupFileExtension = "hm.old";
     useUserPackages = true;
     useGlobalPkgs = true;
     extraSpecialArgs = {inherit inputs' inputs;};

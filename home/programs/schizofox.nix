@@ -4,8 +4,8 @@
   programs.schizofox = {
     enable = true;
     security = {
-      wrapWithProxychains = false;
       sandbox = false;
+      wrapWithProxychains = false;
     };
   };
 }

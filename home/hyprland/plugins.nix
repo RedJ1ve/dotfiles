@@ -6,7 +6,6 @@
   config.wayland.windowManager.hyprland = {
     plugins = with inputs'; [
       # hyprspace.packages.Hyprspace
-      hy3.packages.hy3
       hyprland-plugins.packages.hyprbars
       hyprland-plugins.packages.csgo-vulkan-fix
     ];
@@ -29,15 +28,6 @@
           # maximize
           "rgb(ffff00), 15, , hyprctl dispatch fullscreen 1"
         ];
-      };
-
-      hy3 = {
-        tabs = {
-          height = 2;
-          render_text = false;
-        };
-
-        autotile.enable = true;
       };
     };
   };

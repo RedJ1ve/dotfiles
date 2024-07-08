@@ -1,6 +1,10 @@
-{config, pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.matugen.settings.templates.hyprland = {
-  	input_path = ./theme.conf;
+    input_path = ./theme.conf;
     output_path = "${config.xdg.configHome}/hypr/theme.conf";
   };
 

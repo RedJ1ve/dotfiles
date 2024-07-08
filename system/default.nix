@@ -1,8 +1,13 @@
 {
   imports = [
+    ./boot
+    ./environment
+    ./gaming
+    ./hardware
+    ./networking
     ./nix
-    ./nvidia
-    ./wayland
+    ./security
     ./services
+    ./wayland
   ];
 }

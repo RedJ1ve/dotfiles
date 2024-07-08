@@ -1,8 +1,4 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
+{...}: {
   imports = [
     ./hosts.nix
     ./treefmt.nix

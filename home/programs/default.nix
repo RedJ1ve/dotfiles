@@ -1,7 +1,7 @@
-{pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
-    # ./discord
-    
+    ./discord
+
     ./foot.nix
     ./fuzzel.nix
     ./schizofox.nix
@@ -10,10 +10,11 @@
   ];
 
   home.packages = with pkgs; [
-  	heroic
-  	wineWowPackages.stagingFull
-  	unrar
-  	unzip
-  	ventoy-full
+    heroic
+    wineWowPackages.stagingFull
+    unrar
+    unzip
+    ventoy-full
+    gnome.zenity
   ];
 }

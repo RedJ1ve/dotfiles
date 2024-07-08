@@ -1,22 +1,18 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   vesktop-wrapped = pkgs.vesktop.overrideAttrs (old: {
     patches = (old.patches or []) ++ [./readonlyFix.patch];
-  	postFixup = ''
-  	  wrapProgram $out/bin/vesktop \
-  	    # --add-flags "--disable-gpu"
-  	    --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland"
-  	'';
+    postFixup =
+      (old.postFixup or "")
+      + ''
+        wrapProgram $out/bin/vesktop \
+          --add-flags "--enable-features=UseOzonePlatform --ozone-platform=wayland"
+      '';
   });
 in {
   config = {
-  	home.packages = [
-  	  vesktop-wrapped
-  	];
-
+    home.packages = [
+      vesktop-wrapped
+    ];
 
     xdg.configFile."vesktop/settings.json".text = builtins.toJSON {
       discordBranch = "canary";
@@ -193,19 +189,19 @@ in {
       };
     };
 
-  	services.arrpc = {
-  	  enable = true;
-  	  package = pkgs.arrpc.overrideAttrs (_: {
-  	    pname = "arrpc";
-  	    version = "3.4.0";
+    services.arrpc = {
+      enable = true;
+      package = pkgs.arrpc.overrideAttrs (_: {
+        pname = "arrpc";
+        version = "3.4.0";
 
-  	    src = pkgs.fetchFromGitHub {
-  	      owner = "OpenAsar";
-  	      repo = "arrpc";
-  	      rev = "59553e276716cde3c0afa8bff56aa8af3ab774cc";
-  	      hash = "sha256-kjpsPWjgoSNs569DfN8T3/lPB8MzUck7QqD/wfNL8To=";
-  	    };
-  	  });
-  	};
+        src = pkgs.fetchFromGitHub {
+          owner = "OpenAsar";
+          repo = "arrpc";
+          rev = "59553e276716cde3c0afa8bff56aa8af3ab774cc";
+          hash = "sha256-kjpsPWjgoSNs569DfN8T3/lPB8MzUck7QqD/wfNL8To=";
+        };
+      });
+    };
   };
 }
