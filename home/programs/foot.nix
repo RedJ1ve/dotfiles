@@ -10,7 +10,7 @@
 
     programs.foot = {
       enable = true;
-      package = inputs'.nyxpkgs.packages.foot-transparent;
+      package = inputs'.nyxexprs.packages.foot-transparent;
       server.enable = false;
       settings = {
         main = {

@@ -45,7 +45,8 @@ in {
         # "$mod, Tab, overview:toggle"
 
         # open application launcher
-        "$mod, R, exec, pkill fuzzel || run-as-service fuzzel"
+        # "$mod, R, exec, pkill fuzzel || run-as-service fuzzel"
+        "$mod, R, exec, pkill anyrun || run-as-service anyrun"
 
         # utility
         # terminal

@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
+    ./anyrun
     ./discord
-
     ./foot.nix
     ./fuzzel.nix
     ./schizofox.nix
@@ -15,6 +15,6 @@
     unrar
     unzip
     ventoy-full
-    gnome.zenity
+    zenity
   ];
 }

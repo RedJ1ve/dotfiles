@@ -6,7 +6,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
-    nyxpkgs.url = "github:notashelf/nyxpkgs";
+    nyxexprs.url = "github:notashelf/nyxexprs";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -30,9 +30,11 @@
     };
 
     ags = {
-      url = "github:Aylur/ags";
+      url = "github:aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    anyrun.url = "github:anyrun-org/anyrun";
 
     lanzaboote.url = "github:nix-community/lanzaboote";
 

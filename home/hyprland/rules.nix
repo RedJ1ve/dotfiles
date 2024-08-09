@@ -22,9 +22,6 @@
       "dimaround, class:^(gcr-prompter)$"
       "dimaround, class:^(xdg-desktop-portal-gtk)$"
       "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
-
-      # don't render hyprbars on tiling windows
-      "plugin:hyprbars:nobar, floating:0"
     ];
   };
 }

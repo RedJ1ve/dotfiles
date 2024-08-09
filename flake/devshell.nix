@@ -16,7 +16,7 @@
       packages = with pkgs; [
         config.treefmt.build.wrapper
         nil
-        inputs'.nyxpkgs.packages.alejandra-no-ads
+        inputs'.nyxexprs.packages.alejandra-custom
         git
         glow
         statix
