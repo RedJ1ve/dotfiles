@@ -14,7 +14,12 @@
     wineWowPackages.stagingFull
     unrar
     unzip
+    p7zip
     ventoy-full
     zenity
+    protontricks
+    winetricks
+    openal
+    gnome.nautilus
   ];
 }

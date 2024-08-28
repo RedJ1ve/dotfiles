@@ -44,6 +44,7 @@
               libthai
               mono5
               pango
+              samba
               stdenv.cc.cc.lib
               strace
               zlib

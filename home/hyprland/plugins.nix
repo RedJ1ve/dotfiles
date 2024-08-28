@@ -4,10 +4,10 @@
   ...
 }: {
   config.wayland.windowManager.hyprland = {
-    plugins = with inputs'; [
+    /* plugins = with inputs'; [
       # hyprspace.packages.Hyprspace
       hyprland-plugins.packages.csgo-vulkan-fix
-    ];
+    ]; */
 
     settings.plugin = {
       csgo-vulkan-fix = {
