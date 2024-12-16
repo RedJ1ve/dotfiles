@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     mpris-scrobbler
   ];
@@ -6,8 +6,8 @@
   systemd.user.services.mpris-scrobbler = {
     Unit = {
       Description = "mpris-scrobbler";
-      PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
+      PartOf = ["graphical-session.target"];
+      After = ["graphical-session.target"];
     };
 
     Service = {

@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   pkgs,
   lib,
@@ -6,14 +7,18 @@
 }: {
   imports = [inputs.lanzaboote.nixosModules.lanzaboote];
 
-  environment.systemPackages = with pkgs; [sbctl];
+  options.boot.secureboot.enable = lib.mkEnableOption "Enables secureboot using lanzaboote";
 
-  boot = {
-    loader.systemd-boot.enable = lib.mkForce false;
+  config = lib.mkIf config.boot.secureboot.enable {
+    environment.systemPackages = with pkgs; [sbctl];
 
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
+    boot = {
+      loader.systemd-boot.enable = lib.mkForce false;
+
+      lanzaboote = {
+        enable = true;
+        pkiBundle = "/etc/secureboot";
+      };
     };
   };
 }

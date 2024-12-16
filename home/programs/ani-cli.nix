@@ -3,13 +3,11 @@
   pkgs,
   ...
 }: let
-
   inherit (pkgs) anime4k;
-  
 in {
   home.packages = [
-  	inputs'.nyxexprs.packages.ani-cli
-  	anime4k
+    inputs'.nyxexprs.packages.ani-cli
+    anime4k
   ];
 
   programs.mpv.bindings = {

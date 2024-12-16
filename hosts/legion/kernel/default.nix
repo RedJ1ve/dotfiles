@@ -12,10 +12,12 @@ in {
   # with patchfiles or extraStructuredConfig. This is not the
   # most optimized way to do it, but it works.
   # imports = filter (hasSuffix ".nix") (listFilesRecursive ./config);
-  
-  /* boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod_latest.override {
+
+  /*
+     boot.kernelPackages = pkgs.linuxPackagesFor (pkgs.linux_xanmod_latest.override {
     ignoreConfigErrors = true;
-  }); */
+  });
+  */
 
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 }

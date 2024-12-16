@@ -31,8 +31,8 @@ in {
   systemd.user.services.ags = {
     Unit = {
       Description = "Aylur's GTK Shell";
-      PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
+      PartOf = ["graphical-session.target"];
+      After = ["graphical-session.target"];
     };
 
     Service = {
@@ -45,4 +45,4 @@ in {
 
     Install.WantedBy = ["graphical-session.target"];
   };
-} 
+}

@@ -1,15 +1,12 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.mpv = {
-  	enable = true;
+    enable = true;
 
-  	config = {
-  	  force-window = true;
-  	  hidpi-window-scale = false;
-  	  hwdec = "auto";
-  	  border = "no";
-  	};
+    config = {
+      force-window = true;
+      hidpi-window-scale = false;
+      hwdec = "auto";
+      border = "no";
+    };
   };
 }

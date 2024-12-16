@@ -30,7 +30,7 @@
       url = "github:aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     astal = {
       url = "github:aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,7 +60,6 @@
       };
     };
 
-
     nix-gaming = {
       url = "github:fufexan/nix-gaming";
       inputs = {
@@ -82,7 +81,7 @@
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
-    umu= {
+    umu = {
       url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };

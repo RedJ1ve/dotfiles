@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   systemd.user.services.wluma = {
     Unit = {
       Description = "Automatic backlight control";

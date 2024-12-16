@@ -23,6 +23,8 @@
           modules =
             [
               {networking.hostName = hostname;}
+
+              ../system
             ]
             ++ (args.modules or []);
         });

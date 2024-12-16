@@ -1,4 +1,7 @@
-{
+{lib, ...}: let
+  inherit (lib) mkOption;
+  inherit (lib.types) bool;
+in {
   imports = [
     ./apparmor.nix
     ./encryption.nix
@@ -9,4 +12,10 @@
     ./sudo.nix
     ./usbguard.nix
   ];
+
+  options.security.enable = mkOption {
+    description = "Enable security options";
+    type = bool;
+    default = true;
+  };
 }

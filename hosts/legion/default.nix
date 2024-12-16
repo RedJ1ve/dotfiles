@@ -1,25 +1,47 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
 
     ./kernel
   ];
-  
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+
   users.users.aecyr = {
     isNormalUser = true;
-    extraGroups = ["wheel"]; # Enable ‘sudo’ for the user.
+    extraGroups = ["wheel"];
   };
-  
-  # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.05"; # Did you read the comment?
+
+  boot = {
+    secureboot.enable = true;
+    plymouth.enable = true;
+  };
+
+  gaming.enable = true;
+
+  hardware = {
+    bluetooth.enable = true;
+    tpm.enable = true;
+
+    cpu.amd.enable = true;
+
+    gpu = {
+      amd.enable = true;
+
+      nvidia = {
+        enable = true;
+        hybrid = true;
+        bus = {
+          amd = "PCI:5:0:0";
+          nvidia = "PCI:1:0:0";
+        };
+      };
+    };
+  };
+
+  networking.wifi.enable = true;
+
+  security.enable = true;
+
+  graphical.enable = true;
+
+  system.stateVersion = "24.05";
 }

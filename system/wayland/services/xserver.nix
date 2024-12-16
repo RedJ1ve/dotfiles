@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }: let
@@ -9,14 +8,12 @@
   cfg = config.graphical;
 in {
   config = mkIf cfg.enable {
-    hardware.graphics = {
+    services.xserver = {
       enable = true;
-      enable32Bit = true;
+      displayManager = {
+        gdm.enable = false;
+        lightdm.enable = false;
+      };
     };
-
-    environment.systemPackages = with pkgs; [
-      glxinfo
-      glmark2
-    ];
   };
 }

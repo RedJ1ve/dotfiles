@@ -14,12 +14,14 @@
         }))
 
         # Java 21
-        /*(graalvm-ce.overrideAttrs (_old: rec {
+        /*
+          (graalvm-ce.overrideAttrs (_old: rec {
           src = fetchurl {
             url = "https://download.oracle.com/graalvm/21/archive/graalvm-jdk-21_linux-x64_bin.tar.gz";
             sha256 = "sha256-vhqzybCLV0e3zVd8mR0ltSFXz/HIxfKQ+FVsWTtXpvQ=";
           };
-        })) */
+        }))
+        */
       ];
 
       additionalPrograms = with pkgs; [
@@ -30,7 +32,7 @@
         glfw-wayland-minecraft
       ];
     })
-    
+
     pkgs.mangohud
   ];
 }

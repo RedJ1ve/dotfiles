@@ -1,10 +1,11 @@
 {
   imports = [
-    ./amd.nix
+    ./cpu
+    ./gpu
+
     ./backlight.nix
     ./bluetooth.nix
     ./fwupd.nix
-    ./nvidia.nix
     ./tpm.nix
   ];
 }

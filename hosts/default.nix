@@ -18,7 +18,6 @@
       modules =
         [
           ./legion
-          ../system
         ]
         ++ home-manager;
     };

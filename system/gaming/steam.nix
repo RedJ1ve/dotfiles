@@ -1,17 +1,24 @@
 {
+  config,
   pkgs,
   lib,
   ...
-}: {
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = false;
-    dedicatedServer.openFirewall = false;
+}: let
+  inherit (lib) mkIf;
 
-    #gamescopeSession.enable = true;
+  cfg = config.gaming;
+in {
+  config = mkIf cfg.enable {
+    programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = false;
+      dedicatedServer.openFirewall = false;
 
-    extraCompatPackages = [
-      pkgs.proton-ge-bin
-    ];
+      #gamescopeSession.enable = true;
+
+      extraCompatPackages = [
+        pkgs.proton-ge-bin
+      ];
+    };
   };
 }

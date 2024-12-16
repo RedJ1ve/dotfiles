@@ -1,13 +1,10 @@
 {
   imports = [
-    ./greetd.nix
     ./location.nix
     ./logrotate.nix
     ./oomd.nix
-    ./pipewire.nix
     ./power.nix
     ./time.nix
-    ./xserver.nix
   ];
 
   services = {
