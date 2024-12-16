@@ -1,4 +1,4 @@
-{...}: {
+{
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
 
@@ -13,12 +13,18 @@
     ];
 
     general = {
+      gaps_in = 5;
+      gaps_out = 5;
+      border_size = 1;
+      "col.active_border" = "rgba(88888888)";
+      "col.inactive_border" = "rgba(00000088)";
+
       allow_tearing = true;
       resize_on_border = true;
-      layout = "hy3";
     };
 
     decoration = {
+      rounding = 5;
       blur = {
         enabled = true;
         brightness = 1.0;
@@ -35,12 +41,15 @@
         popups_ignorealpha = 0.2;
       };
 
-      drop_shadow = true;
-      shadow_ignore_window = true;
-      shadow_offset = "0 2";
-      shadow_range = 20;
-      shadow_render_power = 3;
-      "col.shadow" = "rgba(00000055)";
+      shadow = {
+        enabled = true;
+        color = "rgba(00000055)";
+        ignore_window = true;
+        offset = "0 15";
+        range = 100;
+        render_power = 2;
+        scale = 0.97;
+      };
     };
 
     animations = {
@@ -57,6 +66,7 @@
       kb_layout = "gb";
 
       # focus change on cursor move
+      sensitivity = -0.7;
       follow_mouse = 1;
       accel_profile = "flat";
       touchpad.scroll_factor = 0.1;
@@ -77,9 +87,6 @@
 
       # enable variable refresh rate (effective depending on hardware)
       vrr = 1;
-
-      # we do, in fact, want direct scanout
-      no_direct_scanout = false;
     };
 
     # touchpad gestures

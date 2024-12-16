@@ -1,5 +1,7 @@
 {inputs, ...}: {
-  imports = [inputs.treefmt.flakeModule];
+  imports = [
+    inputs.treefmt.flakeModule
+  ];
 
   perSystem = {
     inputs',

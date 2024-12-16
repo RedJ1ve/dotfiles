@@ -1,21 +1,37 @@
 {
+  self',
   inputs',
+  self,
   inputs,
   ...
 }: {
   home-manager = {
     verbose = true;
-    backupFileExtension = "hm.old";
-    useUserPackages = true;
     useGlobalPkgs = true;
-    extraSpecialArgs = {inherit inputs' inputs;};
+    useUserPackages = true;
+    extraSpecialArgs = {inherit self' inputs' self inputs;};
+    backupFileExtension = "hm.old";
 
     users.aecyr.imports = [
       ./aecyr.nix
 
+      ./ags
       ./programs
+      ./services
       ./hyprland
-      # ./themes
+      ./theme
+    ];
+
+    sharedModules = [
+      {
+        programs.home-manager.enable = true;
+
+        manual = {
+          manpages.enable = false;
+          html.enable = false;
+          json.enable = false;
+        };
+      }
     ];
   };
 }

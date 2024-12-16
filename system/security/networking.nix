@@ -1,51 +1,36 @@
 {pkgs, ...}: {
   services = {
-    physlock = {
-      enable = true;
-      allowAnyUser = true;
-
-      lockOn = {
-        suspend = false;
-        hibernate = false;
-      };
-    };
     tor = {
       enable = true;
       client.enable = true;
     };
-    networkd-dispatcher = {
-      enable = true;
-      rules."restart-tor" = {
-        onState = ["routable" "off"];
-        script = ''
-          #!${pkgs.runtimeShell}
-          if [[ $IFACE == "wlan0" && $AdministrativeState == "configured" ]]; then
-            echo "Restarting Tor ..."
-            systemctl restart tor
-          fi
-          exit 0
-        '';
-      };
-    };
 
+    i2pd = {
+      enable = true;
+      yggdrasil.enable = true;
+      proto.httpProxy = {
+        enable = true;
+        outproxy = "http://false.i2p";
+      };
+      addressbook.subscriptions = [
+        "http://i2p-projekt.i2p/hosts.txt"
+        "http://stats.i2p/cgi-bin/newhosts.txt"
+        "http://notbob.i2p/hosts.txt"
+      ];
+    };
     privoxy = {
       enable = true;
-      enableTor = true;
-    };
-  };
-
-  programs.proxychains = {
-    enable = true;
-    quietMode = false;
-    proxyDNS = true;
-    package = pkgs.proxychains-ng;
-    proxies = {
-      tor = {
-        type = "socks5";
-        host = "127.0.0.1";
-        port = 9050;
+      settings = {
+        forward = [
+          ".i2p 127.0.0.1:4444"
+          "200::/7 127.0.0.1:4444"
+          ".ygg 127.0.0.1:4444"
+        ];
+        forward-socks5t = ".onion 127.0.0.1:9050 .";
       };
     };
+
+    networkd-dispatcher.enable = true;
   };
 
   programs.ssh.startAgent = true;

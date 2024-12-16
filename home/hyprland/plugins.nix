@@ -1,14 +1,5 @@
-{
-  inputs',
-  config,
-  ...
-}: {
-  config.wayland.windowManager.hyprland = {
-    /* plugins = with inputs'; [
-      # hyprspace.packages.Hyprspace
-      hyprland-plugins.packages.csgo-vulkan-fix
-    ]; */
-
+{inputs', ...}: {
+  wayland.windowManager.hyprland = {
     settings.plugin = {
       csgo-vulkan-fix = {
         res_w = 1280;

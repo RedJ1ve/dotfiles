@@ -7,6 +7,7 @@
     ./pipewire.nix
     ./power.nix
     ./time.nix
+    ./xserver.nix
   ];
 
   services = {

@@ -7,7 +7,7 @@
   }: {
     devShells.default = pkgs.mkShellNoCC {
       name = "nix";
-      meta.description = "Dev shell for NixosConfiguration";
+      meta.description = "Development shell for my NixOS configurations";
 
       DIRENV_LOG_FORMAT = "";
 
@@ -16,7 +16,6 @@
       packages = with pkgs; [
         config.treefmt.build.wrapper
         nil
-        inputs'.nyxexprs.packages.alejandra-custom
         git
         glow
         statix

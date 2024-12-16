@@ -1,8 +1,8 @@
 {
   imports = [
-    ./dnscrypt.nix
+    # ./dnscrypt.nix
     ./firewall.nix
+    ./iwd.nix
     ./networkmanager.nix
-    ./privoxy.nix
   ];
 }

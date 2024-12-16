@@ -27,7 +27,6 @@ in {
     in
       [
         # compositor commands
-        "$mod SHIFT, E, exec, pkill Hyprland"
         "$mod, C, killactive,"
         "$mod, F, fullscreen,"
         "$mod, G, togglegroup,"
@@ -59,8 +58,6 @@ in {
         # select area to perform OCR on
         "$mod, O, exec, run-as-service wl-ocr"
         ", XF86Favorites, exec, run-as-service wl-ocr"
-        # open calculator
-        ", XF86Calculator, exec, run-as-service gnome-calculator"
 
         "$mod, H, movefocus, l"
         "$mod, J, movefocus, d"

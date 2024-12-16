@@ -1,0 +1,56 @@
+/*
+Error: Invalid CSS after "...nd-color: color": expected ";", was ".adjust($fg, $a..."
+        on line 21 of style.scss
+
+16:     button {
+17:         all: unset;
+18:         background-color: transparent;
+19: 
+20:         &:hover label {
+21:             background-color: color.adjust($fg, $alpha: -0.84);
+22:             border-color: color.adjust($accent, $alpha: -0.8);
+23:         }
+24: 
+25:         &:active label {
+26:             background-color: color.adjust($fg, $alpha: -0.8);
+
+Backtrace:
+style.scss:21
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1238:in `expected'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1233:in `tok!'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:815:in `block in try_declaration'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1284:in `rethrow'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:820:in `try_declaration'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:743:in `declaration_or_ruleset'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:697:in `block_contents'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:758:in `declaration_or_ruleset'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:758:in `declaration_or_ruleset'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:708:in `block_child'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:689:in `block'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:681:in `ruleset'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:707:in `block_child'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:137:in `stylesheet'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:41:in `parse'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/engine.rb:414:in `_to_tree'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:387:in `run'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:63:in `process_result'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
+/nix/store/psk6i7mpbxvf7a07arax5z15dywgz8j7-ruby3.3-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
+/nix/store/pc78yz1frximpicdwvfh9wf4vc0b4clf-sass-3.7.4/lib/ruby/gems/3.3.0/gems/sass-3.7.4/bin/sass:13:in `<top (required)>'
+/nix/store/5grq1ik9sm8kv0ydz5agciymhfc5nwhl-sass-3.7.4/bin/sass:35:in `load'
+/nix/store/5grq1ik9sm8kv0ydz5agciymhfc5nwhl-sass-3.7.4/bin/sass:35:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"...nd-color: color\": expected \";\", was \".adjust($fg, $a...\"\A         on line 21 of style.scss\A \A 16:     button {\A 17:         all: unset;\A 18:         background-color: transparent;\A 19: \A 20:         &:hover label {\A 21:             background-color: color.adjust($fg, $alpha: -0.84);\A 22:             border-color: color.adjust($accent, $alpha: -0.8);\A 23:         }\A 24: \A 25:         &:active label {\A 26:             background-color: color.adjust($fg, $alpha: -0.8);"; }

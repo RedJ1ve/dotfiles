@@ -1,25 +1,46 @@
-{pkgs, ...}: {
+{
+  self',
+  inputs',
+  pkgs,
+  ...
+}: {
   imports = [
-    ./anyrun
+    ./ani-cli.nix
+    ./anyrun.nix
+    ./dconf.nix
     ./discord
     ./foot.nix
-    ./fuzzel.nix
-    ./schizofox.nix
-    ./transient-services.nix
+    # ./lutris.nix
     ./minecraft.nix
+    ./mpv.nix
+    ./run-as-service.nix
+    ./schizofox.nix
   ];
 
   home.packages = with pkgs; [
-    heroic
-    wineWowPackages.stagingFull
+    self'.packages.wl-ocr
+
     unrar
-    unzip
     p7zip
-    ventoy-full
-    zenity
-    protontricks
+
+    lutris
+    wineWowPackages.stagingFull
+    rpcs3
+    inputs'.umu.packages.umu
+
+    jupyter
+
     winetricks
-    openal
-    gnome.nautilus
+    protontricks
+
+    thunderbird
+    libreoffice-qt
+    nautilus
+    telegram-desktop
+    beeper
+
+    obsidian
+    keepassxc
+    # calcure
   ];
 }

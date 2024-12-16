@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  selectedTheme = "rings";
+  selectedTheme = "dark_planet";
 in {
   boot.plymouth = {
     enable = true;

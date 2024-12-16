@@ -1,11 +1,7 @@
-{...}: {
+{
   wayland.windowManager.hyprland.settings = {
     # window rules
     windowrulev2 = [
-      # gnome calculator
-      "float, class:^(org.gnome.Calculator)$"
-      "size 360 490, class:^(org.gnome.Calculator)$"
-
       # make Firefox PiP window floating and sticky
       "float, title:^(Picture-in-Picture)$"
       "pin, title:^(Picture-in-Picture)$"

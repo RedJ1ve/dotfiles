@@ -1,67 +1,64 @@
 {
   inputs',
   pkgs,
+  lib,
   ...
 }: {
-  config = {
-    home.packages = with pkgs; [
-      libsixel # for displaying images
-    ];
+  home.packages = with pkgs; [
+    libsixel
+  ];
 
-    programs.foot = {
-      enable = true;
-      package = inputs'.nyxexprs.packages.foot-transparent;
-      server.enable = false;
-      settings = {
-        main = {
-          # window settings
-          app-id = "foot";
-          title = "foot";
-          locked-title = "no";
-          term = "xterm-256color";
-          pad = "16x16 center";
-          # shell = "zsh";
+  programs.foot = {
+    enable = true;
+    package = inputs'.nyxexprs.packages.foot-transparent;
+    server.enable = false;
 
-          # notifications
-          notify = "notify-send -a \${app-id} -i \${app-id} \${title} \${body}";
-          selection-target = "clipboard";
+    settings = {
+      main = {
+        term = "xterm-256color";
+        pad = "4x4 center";
 
-          # font and font rendering
-          dpi-aware = false; # this looks more readable on a laptop, but it's unreasonably large
-          font = "AestheticIosevka Nerd Font:size=14";
-          font-bold = "AestheticIosevka Nerd Font:size=14";
-          vertical-letter-offset = "-0.90";
-        };
+        selection-target = "clipboard";
 
-        scrollback = {
-          lines = 10000;
-          multiplier = 3;
-        };
-
-        tweak = {
-          font-monospace-warn = "no"; # reduces startup time
-          sixel = "yes";
-        };
-
-        cursor = {
-          style = "beam";
-          beam-thickness = 2;
-        };
-
-        mouse = {
-          hide-when-typing = "yes";
-        };
-
-        url = {
-          launch = "xdg-open \${url}";
-          label-letters = "sadfjklewcmpgh";
-          osc8-underline = "url-mode";
-          protocols = "http, https, ftp, ftps, file";
-          uri-characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_.,~:;/?#@!$&%*+=\"'()[]";
-        };
-
-        colors.alpha = 0.5;
+        dpi-aware = true; # this looks more readable on a laptop, but it's unreasonably large
+        font = "AestheticIosevka Nerd Font:size=10";
+        font-bold = "AestheticIosevka Nerd Font:size=10";
       };
+
+      bell = {
+        urgent = "yes";
+        notify = "yes";
+      };
+
+      desktop-notifications = {
+        command = "${lib.getExe pkgs.libnotify} -a \${app-id} -i \${app-id} \${title} \${body}";
+      };
+
+      scrollback = {
+        lines = 10000;
+        multiplier = 3;
+        indicator-position = "relative";
+        indicator-format = "line";
+      };
+
+      tweak = {
+        font-monospace-warn = "no";
+        sixel = "yes";
+      };
+
+      cursor = {
+        style = "beam";
+        beam-thickness = 2;
+      };
+
+      mouse.hide-when-typing = "yes";
+
+      url = {
+        launch = "${pkgs.xdg-utils}/bin/xdg-open \${url}";
+        protocols = "http, https, ftp, ftps, file, mailto, ipfs";
+      };
+
+      colors.alpha = 0.7;
     };
   };
 }

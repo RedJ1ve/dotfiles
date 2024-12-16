@@ -1,17 +1,23 @@
 {
-  description = "Aecyr's NixOS and Home-Manager Configurations";
+  description = "Aecyr's NixOS Configurations";
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} {imports = [./flake];};
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
+
+      imports = [
+        ./flake
+        ./hosts
+        ./pkgs
+      ];
+    };
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nyxexprs.url = "github:notashelf/nyxexprs";
 
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -20,46 +26,45 @@
 
     aesthetic-iosevka.url = "github:alphatechnolog/aesthetic-iosevka";
 
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-small";
-        home-manager.follows = "home-manager";
-        darwin.follows = "";
-      };
-    };
-
     ags = {
       url = "github:aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    astal = {
+      url = "github:aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     anyrun.url = "github:anyrun-org/anyrun";
 
+    gamma-launcher = {
+      url = "github:mord3rca/gamma-launcher";
+      flake = false;
+    };
+
+    matugen.url = "github:iniox/matugen";
+
     lanzaboote.url = "github:nix-community/lanzaboote";
-
-    # matugen = {
-    #   url = "github:InioX/matugen/module";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-
-    matugen.url = "github:Theaninova/matugen/add-home-manager-module";
 
     nh = {
       url = "github:viperML/nh";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
-    nil = {
-      url = "github:oxalica/nil";
-      inputs.nixpkgs.follows = "nixpkgs-small";
+    nixvim = {
+      url = "github:RedJ1ve/nixvim";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
     };
 
-    neovim-flake = {
-      url = "github:NotAShelf/nvf";
+
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
       inputs = {
-        nixpkgs.follows = "nixpkgs-small";
-        nil.follows = "nil";
+        nixpkgs.follows = "nixpkgs";
         flake-parts.follows = "flake-parts";
       };
     };
@@ -72,65 +77,16 @@
       };
     };
 
-    schizosearch = {
-      url = "github:sioodmy/schizosearch";
-      inputs = {
-        flake-parts.follows = "flake-parts";
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-
-    spicetify = {
-      url = "github:the-argus/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs-small";
-    };
-
     treefmt = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs-small";
     };
 
-    yazi.url = "github:sxyazi/yazi";
-
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
-    hypridle = {
-      url = "github:hyprwm/hypridle";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        nixpkgs.follows = "hyprland/nixpkgs";
-      };
+    umu= {
+      url = "git+https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging\/nix&submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
-    };
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        nixpkgs.follows = "hyprland/nixpkgs";
-      };
-    };
-
-    hyprspace = {
-      url = "github:kzdkm/hyprspace";
-      # inputs.hyprland.follows = "hyprland";
-    };
-
-    xdg-desktop-portal-hyprland = {
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
-      inputs = {
-        hyprlang.follows = "hyprland/hyprlang";
-        nixpkgs.follows = "hyprland/nixpkgs";
-      };
-    };
+    hyprland.url = "github:hyprwm/hyprland";
   };
 }

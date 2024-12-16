@@ -1,10 +1,9 @@
 {
-  config,
   pkgs,
   lib,
   ...
 }: {
-  config.systemd.services.seatd = {
+  systemd.services.seatd = {
     enable = true;
     description = "Seat management daemon";
     script = "${lib.getExe pkgs.seatd} -g wheel";

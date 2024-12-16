@@ -1,5 +1,5 @@
-{config, ...}: {
-  config.environment = {
+{
+  environment = {
     etc."greetd/environments".text = ''
       Hyprland
       zsh

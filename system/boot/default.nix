@@ -14,7 +14,7 @@
     swraid.enable = lib.mkForce false;
 
     loader = {
-      timeout = lib.mkForce 2;
+      timeout = lib.mkForce 0;
       generationsDir.copyKernels = true;
       efi.canTouchEfiVariables = true;
     };

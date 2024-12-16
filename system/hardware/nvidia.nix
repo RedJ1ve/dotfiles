@@ -1,9 +1,10 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = lib.mkForce true;
 
   services.xserver.videoDrivers = ["nvidia"];
 
@@ -22,6 +23,7 @@
       nvtopPackages.nvidia
 
       mesa
+
       vulkan-tools
       vulkan-loader
       vulkan-validation-layers
@@ -34,13 +36,23 @@
 
   hardware = {
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
       modesetting.enable = true;
-      powerManagement.enable = true;
-      open = false;
+      powerManagement = {
+        enable = true;
+        finegrained = true;
+      };
+      prime = {
+        amdgpuBusId = "PCI:5:0:0";
+        nvidiaBusId = "PCI:1:0:0";
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
+      };
+      open = true;
       nvidiaSettings = false;
       nvidiaPersistenced = true;
-      forceFullCompositionPipeline = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
     };
 
     graphics = {

@@ -51,7 +51,7 @@
       lexend
       dejavu_fonts
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       jost
       comfortaa
 

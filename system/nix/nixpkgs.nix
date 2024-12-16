@@ -1,9 +1,6 @@
 {
-  nixpkgs = {
-    config = {
-      allowBroken = false;
-      allowUnfree = true;
-      allowUnsupportedSystem = true;
-    };
+  nixpkgs.config = {
+    allowBroken = false;
+    allowUnfree = true;
   };
 }

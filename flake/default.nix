@@ -1,9 +1,7 @@
-{...}: {
+{
   imports = [
-    ./hosts.nix
-    ./treefmt.nix
     ./devshell.nix
+    ./system.nix
+    ./treefmt.nix
   ];
-
-  systems = ["x86_64-linux"];
 }

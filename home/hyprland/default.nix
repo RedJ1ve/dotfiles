@@ -1,8 +1,4 @@
-{
-  inputs',
-  config,
-  ...
-}: {
+{inputs', ...}: {
   imports = [
     ./binds.nix
     ./plugins.nix
@@ -10,7 +6,7 @@
     ./settings.nix
   ];
 
-  config.wayland.windowManager.hyprland = {
+  wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
     package = inputs'.hyprland.packages.hyprland;
