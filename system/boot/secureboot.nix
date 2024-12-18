@@ -4,16 +4,20 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  inherit (lib) mkIf mkForce mkEnableOption;
+
+  cfg = config.boot.secureboot;
+in {
   imports = [inputs.lanzaboote.nixosModules.lanzaboote];
 
-  options.boot.secureboot.enable = lib.mkEnableOption "Enables secureboot using lanzaboote";
+  options.boot.secureboot.enable = mkEnableOption "Enables secureboot using lanzaboote";
 
-  config = lib.mkIf config.boot.secureboot.enable {
+  config = { #mkIf cfg.enable {
     environment.systemPackages = with pkgs; [sbctl];
 
     boot = {
-      loader.systemd-boot.enable = lib.mkForce false;
+      loader.systemd-boot.enable = mkForce false;
 
       lanzaboote = {
         enable = true;

@@ -8,7 +8,7 @@
     ./ani-cli.nix
     ./anyrun.nix
     ./dconf.nix
-    ./discord
+    ./discord.nix
     ./foot.nix
     # ./lutris.nix
     ./minecraft.nix
