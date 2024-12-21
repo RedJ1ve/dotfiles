@@ -10,6 +10,7 @@ in {
     ./networking.nix
     ./pam.nix
     ./sudo.nix
+    ./tailscale.nix
     ./usbguard.nix
   ];
 

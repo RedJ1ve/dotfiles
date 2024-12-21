@@ -8,7 +8,7 @@
 
   cfg = config.boot.plymouth;
 in {
-  config = { #mkIf cfg.enable {
+  config = mkIf cfg.enable {
     boot.plymouth = {
       theme = mkDefault "dark_planet";
       themePackages = with pkgs; [

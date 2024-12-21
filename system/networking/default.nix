@@ -4,5 +4,6 @@
     ./firewall.nix
     ./iwd.nix
     ./networkmanager.nix
+    ./ssh.nix
   ];
 }

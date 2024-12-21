@@ -31,6 +31,7 @@ in {
     extensions = {
       darkreader.enable = true;
       enableDefaultExtensions = true;
+      enableExtraExtensions = true;
 
       extraExtensions = {
         "keepassxc-browser@keepassxc.org".install_url = "https://addons.mozilla.org/firefox/downloads/latest/keepassxc_browser/latest.xpi";

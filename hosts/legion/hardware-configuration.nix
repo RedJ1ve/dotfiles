@@ -14,7 +14,7 @@
   boot.extraModulePackages = [ ];
 
   boot.initrd.luks.devices.root = {
-    device = "/dev/disk/by-uuid/a55d10d2-544b-4c2f-b67a-a363a008253e2";
+    device = "/dev/disk/by-uuid/a55d10d2-544b-4c2f-b67a-a363a08253e2";
     preLVM = true;
     allowDiscards = true;
   };
@@ -52,7 +52,7 @@
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/3216-3056";
+    { device = "/dev/disk/by-uuid/05E8-BCD9";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };

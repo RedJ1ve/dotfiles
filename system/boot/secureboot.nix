@@ -13,7 +13,7 @@ in {
 
   options.boot.secureboot.enable = mkEnableOption "Enables secureboot using lanzaboote";
 
-  config = { #mkIf cfg.enable {
+  config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [sbctl];
 
     boot = {
